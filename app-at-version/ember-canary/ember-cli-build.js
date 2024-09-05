@@ -1,6 +1,7 @@
 'use strict';
 
 const EmberApp = require('ember-cli/lib/broccoli/ember-app');
+const TerserPlugin = require('terser-webpack-plugin');
 
 module.exports = async function (defaults) {
   const utils = await import('ember-cli-utils');
@@ -24,5 +25,27 @@ module.exports = async function (defaults) {
         package: 'qunit',
       },
     ],
+    packagerOptions: {
+      webpackConfig: {
+        optimization: {
+          minimize: true,
+          minimizer: [
+            new TerserPlugin({
+              terserOptions: {
+                module: true,
+                compress: {
+                  dead_code: true,
+                  passes: 3,
+                  keep_fargs: false,
+                },
+                format: {
+                  comments: false,
+                },
+              },
+            }),
+          ],
+        },
+      },
+    },
   });
 };
