@@ -1,5 +1,5 @@
-import Application from 'ember-canary-custom/app';
-import config from 'ember-canary-custom/config/environment';
+import Application from 'ember-canary-prod-glimmer/app';
+import config from 'ember-canary-prod-glimmer/config/environment';
 import * as QUnit from 'qunit';
 import { setApplication } from '@ember/test-helpers';
 import { setup } from 'qunit-dom';

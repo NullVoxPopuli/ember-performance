@@ -4,9 +4,9 @@ const envUtils = require('ember-cli-utils/environment');
 
 module.exports = function (environment) {
   const ENV = {
-    modulePrefix: 'ember-canary-custom',
+    modulePrefix: 'ember-canary-prod-glimmer',
     environment,
-    rootURL: '/ember-canary-custom/',
+    rootURL: '/ember-canary-prod-glimmer/',
     locationType: 'history',
     EmberENV: {
       EXTEND_PROTOTYPES: false,

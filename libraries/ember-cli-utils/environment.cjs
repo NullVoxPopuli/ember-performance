@@ -11,6 +11,7 @@ module.exports = {
     let { dependencies, devDependencies } = manifest;
 
     return {
+      __name__: manifest.name,
       ...devDependencies,
       ...dependencies,
     };

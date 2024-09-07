@@ -1,5 +1,5 @@
 import EmberRouter from '@ember/routing/router';
-import config from 'ember-canary-custom/config/environment';
+import config from 'ember-canary-prod-glimmer/config/environment';
 
 export default class Router extends EmberRouter {
   location = config.locationType;

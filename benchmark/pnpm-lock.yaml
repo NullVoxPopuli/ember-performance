@@ -44,9 +44,9 @@ importers:
       ember-canary:
         specifier: workspace:*
         version: link:../app-at-version/ember-canary
-      ember-canary-custom:
+      ember-canary-prod-glimmer:
         specifier: workspace:*
-        version: link:../app-at-version/ember-canary-custom
+        version: link:../app-at-version/ember-canary-prod-glimmer
       ember-primitives:
         specifier: ^0.21.0
         version: 0.21.0(5k4tt3b3lwcjw3wwzwx5hgi4re)
