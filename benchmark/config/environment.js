@@ -50,8 +50,8 @@ function emberVersions() {
       let aV = a.match(/\d+-\d+/);
       let bV = b.match(/\d+-\d+/);
 
-      if (!aV[0]) return -1;
-      if (!bV[0]) return 1;
+      if (!aV || !aV[0]) return -1;
+      if (!bV || !bV[0]) return 1;
 
       return semverCompare(`${aV[0]}.0`, `${bV[0]}.0`);
     });
