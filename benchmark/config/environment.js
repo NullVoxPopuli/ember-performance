@@ -28,7 +28,7 @@ function emberVersions() {
         return file;
       }
 
-      return file.replaceAll('-', '.');
+      return file;
     })
     .filter(Boolean)
     .sort((a, b) => {
@@ -47,8 +47,8 @@ function emberVersions() {
         return 1;
       }
 
-      let aV = a.match(/\d+-\d+/);
-      let bV = b.match(/\d+-\d+/);
+      let aV = a.replaceAll('-', '.').match(/\d+-\d+/);
+      let bV = b.replaceAll('-', '.').match(/\d+-\d+/);
 
       if (!aV || !aV[0]) return -1;
       if (!bV || !bV[0]) return 1;
