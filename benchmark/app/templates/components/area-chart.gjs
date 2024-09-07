@@ -3,7 +3,7 @@ import Component from '@glimmer/component';
 import Chart from 'chart.js/auto';
 import { modifier } from 'ember-modifier';
 
-import { formatNumber } from './utils';
+import { formatNumber, getAltName } from './utils';
 
 export default class AreaChart extends Component {
   limit = 8;
@@ -31,11 +31,7 @@ export default class AreaChart extends Component {
     const [axis, ...datasets] = chartData;
 
     const labels = datasets.map(({ emberVersion, altName }) => {
-      if (altName[0].match(/\d/)) {
-        return emberVersion;
-      }
-
-      return emberVersion + ` (${altName})`;
+      return emberVersion + getAltName(altName);
     });
 
     const data = {

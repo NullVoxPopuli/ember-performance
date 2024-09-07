@@ -28,13 +28,7 @@ function emberVersions() {
         return file;
       }
 
-      let matchResult = file.match(/\d+-\d+/);
-
-      if (!matchResult) return;
-
-      let version = matchResult[0];
-
-      return version.replace('-', '.');
+      return file.replaceAll('-', '.');
     })
     .filter(Boolean)
     .sort((a, b) => {
@@ -53,7 +47,13 @@ function emberVersions() {
         return 1;
       }
 
-      return semverCompare(`${a}.0`, `${b}.0`);
+      let aV = a.match(/\d+-\d+/);
+      let bV = b.match(/\d+-\d+/);
+
+      if (!aV[0]) return -1;
+      if (!bV[0]) return 1;
+
+      return semverCompare(`${aV[0]}.0`, `${bV[0]}.0`);
     });
 }
 

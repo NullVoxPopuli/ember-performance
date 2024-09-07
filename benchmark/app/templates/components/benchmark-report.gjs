@@ -3,7 +3,7 @@ import Component from '@glimmer/component';
 import semverCompare from 'semver/functions/compare-loose';
 
 import AreaChart from './area-chart';
-import { formatNumber } from './utils';
+import { formatNumber, getAltName } from './utils';
 
 function cleanedVersion(version) {
   /**
@@ -21,12 +21,6 @@ function cleanedVersion(version) {
   }
 
   return version;
-}
-
-function getAltName({ altName }) {
-  if (altName[0].match(/\d/)) return;
-
-  return `(${altName})`;
 }
 
 export default class BenchmarkReport extends Component {
@@ -125,7 +119,7 @@ export default class BenchmarkReport extends Component {
                   <td>
                     <strong>{{test.name}}</strong>
                     <span class="label label-primary">{{item.emberVersion}}
-                      {{getAltName item}}</span>
+                      {{getAltName item.altName}}</span>
                   </td>
                   <td class="numeric">{{formatNumber
                       item.result.hz
