@@ -2929,7 +2929,7 @@ packages:
     engines: {node: 8.* || 10.* || >= 12}
 
   ember-source@file:ember-source-6.0.0-alpha.1.glimmer-pull-1606+d68bf5e4.tgz:
-    resolution: {integrity: sha512-Hb9Q2fqlKF+SUxFO6DJz8n/j0lyzK7fosNAHuEu8wpOTA60J/LkvCn38OHx/hn5P1j8Ufu7q3518NxSziCW+fg==, tarball: file:ember-source-6.0.0-alpha.1.glimmer-pull-1606+d68bf5e4.tgz}
+    resolution: {integrity: sha512-ZM1gqr/0QRdj6IEiDUmsh89qM2s+3eSwFHeQu8kqntFKnL25GtoRnO5mBUn9dkQLEJvXpkNxLGmFw9c6zF0fQA==, tarball: file:ember-source-6.0.0-alpha.1.glimmer-pull-1606+d68bf5e4.tgz}
     version: 6.0.0-alpha.1.glimmer-pull-1606
     engines: {node: '>= 18.*'}
     peerDependencies:

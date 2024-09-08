@@ -3075,7 +3075,7 @@ packages:
     engines: {node: 8.* || 10.* || >= 12}
 
   ember-source@file:ember-source-5.10.2.tgz:
-    resolution: {integrity: sha512-OcF1xN8v9Ybfj1mB+BdB1oolsVwU1SwCxbkpo1WDAGv5Pk1layefjnGkCQUDJ8yA2PRnVYSGGP83HE4r2hhy/A==, tarball: file:ember-source-5.10.2.tgz}
+    resolution: {integrity: sha512-N/HMAFxdAEprK9I7fpbCPD47M5wIvFKsCeZOg6EDW9+jRshqphJL5Sea0Y8ntq1MFu/unXDvdSShBceFwLExrA==, tarball: file:ember-source-5.10.2.tgz}
     version: 5.10.2
     engines: {node: '>= 16.*'}
     peerDependencies:
