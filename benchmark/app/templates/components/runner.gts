@@ -6,15 +6,9 @@ import { service } from '@ember/service';
 
 import { clearAll } from 'common';
 
-import { versionToUrl } from '../utils';
-
 import type RouterService from '@ember/routing/router-service';
 import type { BenchSession } from 'common';
 import type QueryParams from 'ember-performance/services/query-params';
-
-function isSpecial(name: string) {
-  return name.includes('canary') || name.includes('bata');
-}
 
 // https://stackoverflow.com/a/12646864
 function shuffleArray(array) {
