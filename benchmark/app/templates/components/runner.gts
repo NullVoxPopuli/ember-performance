@@ -6,6 +6,8 @@ import { service } from '@ember/service';
 
 import { clearAll } from 'common';
 
+import { versionToUrl } from '../utils';
+
 import type RouterService from '@ember/routing/router-service';
 import type { BenchSession } from 'common';
 import type QueryParams from 'ember-performance/services/query-params';
@@ -16,11 +18,11 @@ function isSpecial(name: string) {
 
 // https://stackoverflow.com/a/12646864
 function shuffleArray(array) {
-    for (let i = array.length - 1; i > 0; i--) {
-        const j = Math.floor(Math.random() * (i + 1));
+  for (let i = array.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
 
-        [array[i], array[j]] = [array[j], array[i]];
-    }
+    [array[i], array[j]] = [array[j], array[i]];
+  }
 }
 
 export class Runner extends Component {
@@ -49,8 +51,8 @@ export class Runner extends Component {
   };
 
   /**
-  * This is gross, I'm sorry
-  */
+   * This is gross, I'm sorry
+   */
   start = async () => {
     try {
       await Promise.resolve();
@@ -88,7 +90,7 @@ export class Runner extends Component {
 
           let { protocol, host } = window.location;
 
-          let subPath = isSpecial(current) ? current : `ember-${current.replace(`.`, `-`)}`
+          let subPath = `${current.replace(`.`, `-`)}`;
           let timePerTest = this.queryParams.timePerTest.value;
 
           this.testUrl = `${protocol}//${host}/${subPath}/index.html?run=${bench}&timePerTest=${timePerTest}`;
@@ -110,12 +112,12 @@ export class Runner extends Component {
               this.remainingTests--;
               // This is an arbitrary timeout of 1s to try to give the Garbage Collector some time to catch up.
               // The goal is to reduce the variance in the tests.
-              this.status = 'Letting GC catch up...'
-              await new Promise(resolve => setTimeout(resolve, 1000));
+              this.status = 'Letting GC catch up...';
+              await new Promise((resolve) => setTimeout(resolve, 1000));
               this.status = '';
               finish();
             }
-          }
+          };
 
           window.addEventListener('message', waitForFinish);
           this.currentIframeWindow.postMessage(JSON.stringify(['run', bench]));
@@ -146,10 +148,14 @@ export class Runner extends Component {
       >Run Tests</button>
 
       {{#if this.isRunning}}
-        Running {{this.totalTests}} Tests. {{this.remainingTests}} Remaining... {{this.status}}
+        Running
+        {{this.totalTests}}
+        Tests.
+        {{this.remainingTests}}
+        Remaining...
+        {{this.status}}
       {{/if}}
     </div>
-
 
     {{#if this.testUrl}}
       <iframe
