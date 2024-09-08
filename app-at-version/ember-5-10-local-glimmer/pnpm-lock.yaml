@@ -164,6 +164,9 @@ importers:
       qunit-dom:
         specifier: ^3.2.0
         version: 3.2.0
+      terser-webpack-plugin:
+        specifier: ^5.3.10
+        version: 5.3.10(webpack@5.94.0)
       tracked-built-ins:
         specifier: ^3.3.0
         version: 3.3.0
@@ -3072,7 +3075,7 @@ packages:
     engines: {node: 8.* || 10.* || >= 12}
 
   ember-source@file:ember-source-5.10.2.tgz:
-    resolution: {integrity: sha512-WtU2u85QGcX2AjtcynKIw3XBymDAQeorNzjYMAOjh/K7wRLXNItNAzplqVIOD4QPi3i8N1ZDRqQbxueOIwWIoA==, tarball: file:ember-source-5.10.2.tgz}
+    resolution: {integrity: sha512-OcF1xN8v9Ybfj1mB+BdB1oolsVwU1SwCxbkpo1WDAGv5Pk1layefjnGkCQUDJ8yA2PRnVYSGGP83HE4r2hhy/A==, tarball: file:ember-source-5.10.2.tgz}
     version: 5.10.2
     engines: {node: '>= 16.*'}
     peerDependencies:
