@@ -25,3 +25,9 @@ export function formatNumber(
     minimumFractionDigits: Math.abs(exponent || 0) + 2,
   }).format(number);
 }
+
+export function getAltName(altName: string) {
+  if (altName.match(/\d+-\d+$/)) return;
+
+  return ` (${altName})`;
+}

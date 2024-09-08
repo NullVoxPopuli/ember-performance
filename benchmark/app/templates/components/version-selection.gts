@@ -3,6 +3,8 @@ import { fn } from '@ember/helper';
 import { on } from '@ember/modifier';
 import { service } from '@ember/service';
 
+import { sortedEmbers } from '../utils';
+
 import type { BenchSession } from 'common';
 import type QueryParams from 'ember-performance/services/query-params';
 
@@ -36,20 +38,20 @@ export class VersionSelection extends Component {
         class="btn btn-default btn-xs"
       >None</button>
 
-      <br><br>
+      <br /><br />
 
       <div class="form-group">
-        {{#each this.benchSession.availableEmberVersions as |version|}}
+        {{#each sortedEmbers as |x|}}
           <div>
             <label>
 
               <input
                 type="checkbox"
-                checked={{this.queryParams.emberVersions.hasItem version}}
-                {{on "change" (fn this.toggle version)}}
+                checked={{this.queryParams.emberVersions.hasItem x.name}}
+                {{on "change" (fn this.toggle x.name)}}
               />
 
-              {{version}}
+              {{x.short}}
             </label>
           </div>
         {{/each}}

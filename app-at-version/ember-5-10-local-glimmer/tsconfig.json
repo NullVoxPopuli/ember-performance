@@ -1,0 +1,19 @@
+
+{
+  "extends": "@tsconfig/ember/tsconfig.json",
+  "glint": {
+    "environment": ["ember-loose", "ember-template-imports"]
+  },
+  "compilerOptions": {
+    "lib": ["DOM", "ES2023"],
+    "declaration": false,
+    // temporary until ember gets the glimmer-vm upgrade
+    "skipLibCheck": true,
+    "paths": {
+      "ember-5-10-local-glimmer/tests/*": ["tests/*"],
+      "ember-5-10-local-glimmer/*": ["app/*"],
+      "*": ["types/*"]
+    }
+  },
+  "include": ["app/**/*", "tests/**/*", "types/**/*"]
+}
