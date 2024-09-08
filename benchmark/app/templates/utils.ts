@@ -39,7 +39,7 @@ function isCanaryOrBeta(str: string) {
   return str.includes('canary') || str.includes('beta');
 }
 
-function looseSemverCompare(a: string, b: string) {
+export function looseSemverCompare(a: string, b: string) {
   let isASpecial = isCanaryOrBeta(a);
   let isBSpecial = isCanaryOrBeta(b);
 
@@ -55,11 +55,14 @@ function looseSemverCompare(a: string, b: string) {
     return -1;
   }
 
-  let aV = a.replaceAll('-', '.').match(/\d+\.\d+/);
-  let bV = b.replaceAll('-', '.').match(/\d+\.\d+/);
+  let aV = a.replaceAll('-', '.').match(/\d+\.\d+(\.\d+)?/);
+  let bV = b.replaceAll('-', '.').match(/\d+\.\d+(\.\d+)?/);
 
   if (!aV || !aV[0]) return -1;
   if (!bV || !bV[0]) return 1;
 
-  return semverCompare(`${aV[0]}.0`, `${bV[0]}.0`);
+  let aVFull = aV[0].split('.').length === 2 ? `${aV[0]}.0` : aV[0];
+  let bVFull = bV[0].split('.').length === 2 ? `${bV[0]}.0` : bV[0];
+
+  return semverCompare(aVFull, bVFull);
 }

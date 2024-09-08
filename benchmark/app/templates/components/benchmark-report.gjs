@@ -1,7 +1,6 @@
 import Component from '@glimmer/component';
 
-import semverCompare from 'semver/functions/compare-loose';
-
+import { looseSemverCompare } from '../utils';
 import AreaChart from './area-chart';
 import { formatNumber, getAltName } from './utils';
 
@@ -40,16 +39,7 @@ export default class BenchmarkReport extends Component {
   get groupedTests() {
     const tests = {};
 
-    let sorted = this.args.report.sort((a, b) => {
-      let av = cleanedVersion(a.version);
-      let bv = cleanedVersion(b.version);
-
-      try {
-        return semverCompare(av, bv);
-      } catch {
-        return av.localeCompare(bv);
-      }
-    });
+    let sorted = this.args.report.toSorted((a, b) => looseSemverCompare(a.version, b.version));
 
     // eslint-disable-next-line no-console
     console.log('sorted data', sorted);
