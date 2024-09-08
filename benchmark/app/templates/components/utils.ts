@@ -27,7 +27,7 @@ export function formatNumber(
 }
 
 export function getAltName(altName: string) {
-  if (altName.match(/\d+-\d+$/)) return;
+  if (altName.match(/\d+-\d+$/)) return '';
 
   return ` (${altName})`;
 }
