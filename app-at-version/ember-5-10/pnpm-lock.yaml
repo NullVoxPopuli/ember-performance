@@ -164,6 +164,9 @@ importers:
       qunit-dom:
         specifier: ^3.2.0
         version: 3.2.0
+      terser-webpack-plugin:
+        specifier: ^5.3.10
+        version: 5.3.10(webpack@5.94.0)
       tracked-built-ins:
         specifier: ^3.3.0
         version: 3.3.0
