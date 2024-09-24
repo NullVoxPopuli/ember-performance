@@ -36,7 +36,20 @@ export function toShortName(version: string) {
 }
 
 function isCanaryOrBeta(str: string) {
-  return str.includes('canary') || str.includes('beta');
+  return str.includes('canary') || str.includes('beta') || str.includes('alpha');
+}
+
+function prereleaseValue(v: string) {
+  return v.includes('canary') ? 3 : v.includes('alpha') ? 2 : v.includes('beta') ? 1 : 0;
+}
+
+function comparePrerelease(a: string, b: string) {
+  let aValue = prereleaseValue(a);
+  let bValue = prereleaseValue(b);
+
+  if (aValue === bValue) return 0;
+
+  return aValue > bValue ? 1 : -1;
 }
 
 export function looseSemverCompare(a: string, b: string) {
@@ -44,11 +57,11 @@ export function looseSemverCompare(a: string, b: string) {
   let isBSpecial = isCanaryOrBeta(b);
 
   if (isASpecial && isBSpecial) {
-    return a.localeCompare(b);
+    return comparePrerelease(a, b);
   }
 
   if (isASpecial) {
-    return -1;
+    return 1;
   }
 
   if (isBSpecial) {

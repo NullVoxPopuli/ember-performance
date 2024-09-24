@@ -23,9 +23,6 @@ importers:
       ember-5-10:
         specifier: workspace:*
         version: link:../app-at-version/ember-5-10
-      ember-5-10-local-glimmer:
-        specifier: workspace:*
-        version: link:../app-at-version/ember-5-10-local-glimmer
       ember-5-11:
         specifier: workspace:*
         version: link:../app-at-version/ember-5-11
@@ -47,12 +44,12 @@ importers:
       ember-5-9:
         specifier: workspace:*
         version: link:../app-at-version/ember-5-9
+      ember-beta:
+        specifier: workspace:*
+        version: link:../app-at-version/ember-beta
       ember-canary:
         specifier: workspace:*
         version: link:../app-at-version/ember-canary
-      ember-canary-local-glimmer:
-        specifier: workspace:*
-        version: link:../app-at-version/ember-canary-local-glimmer
       ember-canary-vite:
         specifier: workspace:*
         version: link:../app-at-version/ember-canary-vite
