@@ -3,6 +3,7 @@ import { packageJson } from 'ember-apply';
 import { rm } from 'node:fs/promises';
 import { existsSync } from 'node:fs';
 import { join } from 'node:path';
+import { globby } from 'globby';
 
 const repo = await getPackages(process.cwd());
 
@@ -68,4 +69,11 @@ for (let pkg of repo.packages) {
       await rm(f, { recursive: true });
     }
   }
+
+}
+
+const nokeeps = await globby(['**/.gitkeep'], { gitignore: true} );
+
+for (let f of nokeeps) {
+  await rm(f, { recursive: true });
 }
