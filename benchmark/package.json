@@ -104,6 +104,8 @@
     "ember-5-7": "workspace:*",
     "ember-5-8": "workspace:*",
     "ember-5-9": "workspace:*",
+    "ember-6-1": "workspace:*",
+    "ember-6-2": "workspace:*",
     "ember-canary": "workspace:*",
     "ember-beta": "workspace:*",
     "ember-canary-vite": "workspace:*",
