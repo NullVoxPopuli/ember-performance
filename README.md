@@ -25,14 +25,12 @@ MIT
 ### Adding a new app 
 
 1. `cd app-at-version`
-2. `npx ember-cli@6.0 new ember-6-0 --no-welcome --pnpm --skip-install --skip-git --embroider`
+2. `npx ember-cli@6.3 new ember-6-3 --no-welcome --pnpm --skip-install --skip-git --embroider`
 3. Add dependencies 
     ```bash
-    pnpm add --save-dev @nullvoxpopuli/eslint-configs \
+    pnpm add --save-dev ember-eslint \
         common@workspace:^ ember-cli-utils@workspace:^ \
-        ember-template-imports \
         pnpm-sync-dependencies-meta-injected \
-        prettier-plugin-ember-template-tag \
         ember-route-template  
     ```
 

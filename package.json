@@ -1,8 +1,10 @@
 {
   "name": "performance-testing-monorepo-root",
   "private": true,
+  "type": "module",
   "packageManager": "pnpm@9.9.0",
   "scripts": {
+    "clean": "node ./bin/clean.js",
     "start": "turbo --filter 'ember-performance' start",
     "lint:fix": "turbo fix",
     "prepare:dev": "turbo build build:dev --filter=ember-performance^...",
@@ -14,6 +16,10 @@
     "pnpm": "9.9.0"
   },
   "devDependencies": {
-    "turbo": "^2.0.11"
+    "@manypkg/get-packages": "^2.2.2",
+    "ember-apply": "^2.12.0",
+    "globby": "^14.1.0",
+    "prettier": "^3.5.1",
+    "turbo": "^2.4.2"
   }
 }

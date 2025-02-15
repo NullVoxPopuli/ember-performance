@@ -3,7 +3,7 @@
   "packages": [
     {
       "name": "@embroider/app-blueprint",
-      "version": "0.9.0",
+      "version": "0.23.0",
       "blueprints": [
         {
           "name": "@embroider/app-blueprint",

@@ -1,65 +1,27 @@
-import { defineConfig } from "vite";
-import {
-  resolver,
-  hbs,
-  scripts,
-  templateTag,
-  optimizeDeps,
-  compatPrebuild,
-  assets,
-  contentFor,
-} from "@embroider/vite";
-import { babel } from "@rollup/plugin-babel";
+import { defineConfig } from 'vite';
+import { extensions, ember } from '@embroider/vite';
+import { babel } from '@rollup/plugin-babel';
 
-const extensions = [
-  ".mjs",
-  ".gjs",
-  ".js",
-  ".mts",
-  ".gts",
-  ".ts",
-  ".hbs",
-  ".json",
-];
+const validator = `${process.cwd()}/node_modules/ember-source/dist/packages/@glimmer/validator/index.js`;
+const tracking =
+  `${process.cwd()}/node_modules/ember-source/dist/packages/@glimmer/tracking/index.js`;
+const cachePrimitives =
+  `${process.cwd()}/node_modules/ember-source/dist/packages/@glimmer/tracking/primitives/cache.js`;
 
-export default defineConfig(({ mode }) => {
-  return {
-    base: "/ember-canary-vite/",
-    resolve: {
+export default defineConfig({
+  resolve: {
+    extensions,
+    alias: [
+      { find: /^@glimmer\/validator$/, replacement: validator },
+      { find: /^@glimmer\/tracking$/, replacement: tracking },
+      { find: /^@glimmer\/tracking\/primitives\/cache$/, replacement: cachePrimitives },
+  ],
+  },
+  plugins: [
+    ember(),
+    babel({
+      babelHelpers: 'runtime',
       extensions,
-    },
-    plugins: [
-      hbs(),
-      templateTag(),
-      scripts(),
-      resolver(),
-      compatPrebuild(),
-      assets(),
-      contentFor(),
-
-      babel({
-        babelHelpers: "runtime",
-        extensions,
-      }),
-    ],
-    optimizeDeps: optimizeDeps(),
-    server: {
-      port: 4200,
-    },
-    build: {
-      outDir: "dist",
-      rollupOptions: {
-        input: {
-          main: "index.html",
-          ...(shouldBuildTests(mode)
-            ? { tests: "tests/index.html" }
-            : undefined),
-        },
-      },
-    },
-  };
+    }),
+  ],
 });
-
-function shouldBuildTests(mode) {
-  return mode !== "production" || process.env.FORCE_BUILD_TESTS;
-}
