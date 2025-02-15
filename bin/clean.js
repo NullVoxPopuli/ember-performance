@@ -21,6 +21,8 @@ const depsToRemove = [
     'typescript-eslint',
     'stylelint',
     'stylelint-config-standard',
+    'prettier',
+    'prettier-plugin-ember-template-tag',
     'globals',
 ];
 /**
@@ -42,6 +44,11 @@ for (let pkg of repo.packages) {
     // no hbs
     delete json.scripts['lint:hbs'];
     delete json.scripts['lint:hbs:fix'];
+    // lint from root
+    delete json.scripts['lint'];
+    delete json.scripts['lint:fix'];
+    delete json.scripts['lint:js'];
+    delete json.scripts['lint:js:fix'];
 
     // Don't want the regular build
     // as we use build:dev and build:prod
