@@ -1,0 +1,10 @@
+*.md
+*.yaml
+*.yml
+
+dist/
+node_modules/
+coverage/
+vendor/
+ember/
+

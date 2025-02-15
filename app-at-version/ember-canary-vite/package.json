@@ -13,7 +13,6 @@
   "scripts": {
     "build:prod": "pnpm _syncPnpm && vite build",
     "build:dev": "pnpm _syncPnpm && vite build --mode development",
-    "build": "vite build",
     "_lint": "concurrently \"pnpm:lint:*(!fix)\" --names \"lint:\"",
     "_lint:fix": "concurrently \"pnpm:lint:*:fix\" --names \"fix:\"",
     "_lint:hbs": "ember-template-lint .",
