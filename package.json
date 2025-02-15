@@ -4,6 +4,7 @@
   "type": "module",
   "packageManager": "pnpm@9.9.0",
   "scripts": {
+    "clean": "node ./bin/clean.js",
     "start": "turbo --filter 'ember-performance' start",
     "lint:fix": "turbo fix",
     "prepare:dev": "turbo build build:dev --filter=ember-performance^...",

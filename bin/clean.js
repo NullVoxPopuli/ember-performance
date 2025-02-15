@@ -33,6 +33,8 @@ for (let pkg of repo.packages) {
     'globals',
   ], pkg.dir);
   await packageJson.modify((json => {
+    let hasVite = Boolean(json.devDependencies['vite'])
+
     // no styles, also I don't like stylelint
     delete json.scripts['lint:css'];
     delete json.scripts['lint:css:fix'];
@@ -43,7 +45,15 @@ for (let pkg of repo.packages) {
     // Don't want the regular build
     // as we use build:dev and build:prod
     delete json.scripts.build;
+
+    // scripts we want
+    if (!hasVite) {
+    json.scripts['start'] =
+     "pnpm _syncPnpm && NODE_NO_WARNINGS=1 concurrently 'ember serve' 'pnpm _syncPnpm --watch' --names 'serve,inject'";
+    }
+
   }), pkg.dir)
+
 
   const toRemove = [
     join(pkg.dir, 'stylelintrc.js'),
