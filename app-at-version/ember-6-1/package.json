@@ -59,8 +59,7 @@
     "tracked-built-ins": "^3.4.0",
     "webpack": "^5.97.1"
   },
-
-"pnpm": {
+  "pnpm": {
     "overrides": {
       "@ember/string": "^4.0.0"
     }

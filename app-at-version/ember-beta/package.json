@@ -68,7 +68,6 @@
       "injected": true
     }
   },
-
   "pnpm": {
     "patchedDependencies": {
       "fs-extra@9.1.0": "patches/fs-extra@9.1.0.patch"

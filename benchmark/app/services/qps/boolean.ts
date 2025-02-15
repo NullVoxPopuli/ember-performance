@@ -26,4 +26,3 @@ export class QPBoolean extends QP<boolean> {
     this.set(true);
   };
 }
-

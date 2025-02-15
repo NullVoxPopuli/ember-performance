@@ -16,12 +16,12 @@ export class Settings extends Component {
 
   toggleRandom = () => {
     this.queryParams.randomize.toggle();
-  }
+  };
 
   setTimePerTest = (event: Event) => {
     assert(`[Bug]`, event.target instanceof HTMLInputElement);
     this.queryParams.timePerTest.set(event.target.value);
-  }
+  };
 
   <template>
     <fieldset>
@@ -54,11 +54,11 @@ export class Settings extends Component {
           </label>
         </div>
 
-        <br>
+        <br />
         <div>
           <label>
             Test Duration (ms)
-            <br>
+            <br />
             <input
               type="number"
               value={{this.queryParams.timePerTest.value}}

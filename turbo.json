@@ -1,9 +1,5 @@
 {
-  "globalDependencies": [
-    "pnpm-lock.yaml",
-    "patches",
-    ".npmrc"
-  ],
+  "globalDependencies": ["pnpm-lock.yaml", "patches", ".npmrc"],
   // "globalPassThroughEnv": [],
   "tasks": {
     "start": {
@@ -60,10 +56,11 @@
       ],
       "dependsOn": ["^build"]
     },
+    "//#format": { "cache": false },
     "fix": {
       "inputs": [],
       "outputs": [],
-      "dependsOn": ["lint:prettier:fix"]
+      "dependsOn": ["//#format"]
     },
     "lint:prettier:fix": {
       "outputs": [],

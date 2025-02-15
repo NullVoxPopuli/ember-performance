@@ -1,4 +1,3 @@
-
 import Router from './router.js';
 import ENV from './config/environment.js';
 import PageTitleService from 'ember-page-title/services/page-title';
@@ -12,7 +11,7 @@ function formatAsResolverEntries(imports) {
     Object.entries(imports).map(([k, v]) => [
       k.replace(/\.g?(j|t)s$/, '').replace(/^\.\//, `${appName}/`),
       v,
-    ])
+    ]),
   );
 }
 
@@ -23,13 +22,13 @@ function formatAsResolverEntries(imports) {
  */
 const resolverRegistry = {
   ...formatAsResolverEntries(
-    import.meta.glob('./templates/**/*.{gjs,gts,js,ts}', { eager: true })
+    import.meta.glob('./templates/**/*.{gjs,gts,js,ts}', { eager: true }),
   ),
   ...formatAsResolverEntries(
-    import.meta.glob('./services/**/*.{js,ts}', { eager: true })
+    import.meta.glob('./services/**/*.{js,ts}', { eager: true }),
   ),
   ...formatAsResolverEntries(
-    import.meta.glob('./routes/**/*.{js,ts}', { eager: true })
+    import.meta.glob('./routes/**/*.{js,ts}', { eager: true }),
   ),
   [`${appName}/router`]: Router,
 };

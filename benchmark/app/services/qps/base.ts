@@ -25,7 +25,7 @@ export class QP<Value = unknown> {
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   set = (..._args: any[]): void => {
     throw new Error('Not Implemented');
-  }
+  };
 
   /**
    * Allows batching QP updates
@@ -47,6 +47,4 @@ export class QP<Value = unknown> {
       });
     });
   };
-
 }
-

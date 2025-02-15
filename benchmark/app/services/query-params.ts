@@ -22,4 +22,3 @@ export default class QueryParams extends Service {
   @link randomize = new QPBoolean('randomize', true);
   @link timePerTest = new QPInteger('timePerTest', 1_000);
 }
-

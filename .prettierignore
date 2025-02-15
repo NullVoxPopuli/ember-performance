@@ -1,6 +1,7 @@
 *.md
 *.yaml
 *.yml
+*.html
 
 dist/
 node_modules/

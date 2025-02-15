@@ -16,4 +16,3 @@ export class QPInteger extends QP<number> {
 
   set = (item: number | string) => this.setQP({ [this.name]: item });
 }
-

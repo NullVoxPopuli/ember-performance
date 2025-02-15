@@ -39,7 +39,6 @@ export class QPArray extends QP {
   };
 }
 
-
 function decodeJSONArrayURI(raw?: unknown) {
   if (!raw) return [];
   if (typeof raw !== 'string') return [];

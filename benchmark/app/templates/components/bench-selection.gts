@@ -45,11 +45,13 @@ export class BenchSelection extends Component {
 
   hasAnyActive = (maybeGroup: typeof this.benchSession.groupedBenchmarks) => {
     if (Array.isArray(maybeGroup)) {
-      return maybeGroup.some(esModule => this.queryParams.benchmarks.hasItem(esModule.name));
+      return maybeGroup.some((esModule) => this.queryParams.benchmarks.hasItem(esModule.name));
     }
 
-    return Object.values(maybeGroup).flat().some(esModule => this.queryParams.benchmarks.hasItem(esModule.name))
-  }
+    return Object.values(maybeGroup)
+      .flat()
+      .some((esModule) => this.queryParams.benchmarks.hasItem(esModule.name));
+  };
 
   <template>
     <style>
@@ -89,7 +91,7 @@ export class BenchSelection extends Component {
         class="btn btn-default btn-xs"
       >None</button>
 
-      <br><br>
+      <br /><br />
 
       <ul class="benchmark-list form-group">
         {{#each-in this.benchSession.groupedBenchmarks as |groupName group|}}

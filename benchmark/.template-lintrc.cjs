@@ -6,6 +6,5 @@ module.exports = {
     'no-inline-styles': false,
     'no-forbidden-elements': false,
     'no-whitespace-for-layout': false,
-
   },
 };

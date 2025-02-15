@@ -7,24 +7,23 @@ import { globby } from 'globby';
 
 const repo = await getPackages(process.cwd());
 
-
 const depsToRemove = [
-    '@nullvoxpopuli/eslint-configs',
-    '@eslint/js',
-    'eslint',
-    'eslint-plugin-ember',
-    'eslint-plugin-n',
-    'eslint-plugin-prettier',
-    'eslint-plugin-qunit',
-    'eslint-config-prettier',
-    '@babel/eslint-parser',
-    'ember-template-lint',
-    'typescript-eslint',
-    'stylelint',
-    'stylelint-config-standard',
-    'prettier',
-    'prettier-plugin-ember-template-tag',
-    'globals',
+  '@nullvoxpopuli/eslint-configs',
+  '@eslint/js',
+  'eslint',
+  'eslint-plugin-ember',
+  'eslint-plugin-n',
+  'eslint-plugin-prettier',
+  'eslint-plugin-qunit',
+  'eslint-config-prettier',
+  '@babel/eslint-parser',
+  'ember-template-lint',
+  'typescript-eslint',
+  'stylelint',
+  'stylelint-config-standard',
+  'prettier',
+  'prettier-plugin-ember-template-tag',
+  'globals',
 ];
 /**
  * Removing all these from each project will help overall
@@ -36,8 +35,8 @@ const depsToRemove = [
 for (let pkg of repo.packages) {
   if (!pkg.dir.includes('app-at-version')) continue;
 
-  await packageJson.modify((json => {
-    let hasVite = Boolean(json.devDependencies['vite'])
+  await packageJson.modify((json) => {
+    let hasVite = Boolean(json.devDependencies['vite']);
 
     // no styles, also I don't like stylelint
     delete json.scripts['lint:css'];
@@ -61,19 +60,17 @@ for (let pkg of repo.packages) {
 
     // scripts we want
     if (hasVite) {
-    json.scripts['start'] =
-     "pnpm _syncPnpm && NODE_NO_WARNINGS=1 concurrently 'vite' 'pnpm _syncPnpm --watch' --names 'serve,inject'";
+      json.scripts['start'] =
+        "pnpm _syncPnpm && NODE_NO_WARNINGS=1 concurrently 'vite' 'pnpm _syncPnpm --watch' --names 'serve,inject'";
     } else {
-    json.scripts['start'] =
-     "pnpm _syncPnpm && NODE_NO_WARNINGS=1 concurrently 'ember serve' 'pnpm _syncPnpm --watch' --names 'serve,inject'";
+      json.scripts['start'] =
+        "pnpm _syncPnpm && NODE_NO_WARNINGS=1 concurrently 'ember serve' 'pnpm _syncPnpm --watch' --names 'serve,inject'";
     }
 
     for (let dep of depsToRemove) {
       delete json.devDependencies[dep];
     }
-
-  }), pkg.dir)
-
+  }, pkg.dir);
 
   const toRemove = [
     join(pkg.dir, 'stylelintrc.js'),
@@ -99,10 +96,9 @@ for (let pkg of repo.packages) {
       await rm(f, { recursive: true });
     }
   }
-
 }
 
-const nokeeps = await globby(['**/.gitkeep'], { gitignore: true} );
+const nokeeps = await globby(['**/.gitkeep'], { gitignore: true });
 
 for (let f of nokeeps) {
   await rm(f, { recursive: true });
