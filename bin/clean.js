@@ -10,6 +10,7 @@ const repo = await getPackages(process.cwd());
 
 const depsToRemove = [
     '@nullvoxpopuli/eslint-configs',
+    '@eslint/js',
     'eslint',
     'eslint-plugin-ember',
     'eslint-plugin-n',
@@ -54,8 +55,15 @@ for (let pkg of repo.packages) {
     // as we use build:dev and build:prod
     delete json.scripts.build;
 
+    // We don't have tests in each app
+    delete json.scripts['test'];
+    delete json.scripts['test:ember'];
+
     // scripts we want
-    if (!hasVite) {
+    if (hasVite) {
+    json.scripts['start'] =
+     "pnpm _syncPnpm && NODE_NO_WARNINGS=1 concurrently 'vite' 'pnpm _syncPnpm --watch' --names 'serve,inject'";
+    } else {
     json.scripts['start'] =
      "pnpm _syncPnpm && NODE_NO_WARNINGS=1 concurrently 'ember serve' 'pnpm _syncPnpm --watch' --names 'serve,inject'";
     }

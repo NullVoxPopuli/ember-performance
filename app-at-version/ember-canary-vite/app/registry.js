@@ -1,7 +1,7 @@
 
 import Router from './router.js';
 import PageTitleService from 'ember-page-title/services/page-title';
-import { BenchSession } from 'common';
+import { default as BenchSession } from 'common/services/bench-session';
 import { default as ForAppAtVersion } from 'common/services/runner/for-app-at-version';
 
 const appName = `ember-canary-vite`;
