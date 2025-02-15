@@ -45,6 +45,12 @@
     "pnpm-sync-dependencies-meta-injected": "^0.0.14",
     "vite": "^6.0.0"
   },
+  "pnpm": {
+    "overrides": {
+      "@ember/string": "^4.0.0",
+      "@glimmer/component": "^2.0.0"
+    }
+  },
   "engines": {
     "node": ">= 18"
   },

@@ -10,6 +10,10 @@ const ENV = {
       // e.g. EMBER_NATIVE_DECORATOR_SUPPORT: true
     },
   },
+  deps: {
+    __name__: 'ember-canary-vite',
+    'ember-source': 'v6.4.0-alpha.3#91467a6cd',
+  },
   APP: {
     // Here you can pass flags/options to your application instance
     // when it is created

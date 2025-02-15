@@ -1,5 +1,6 @@
 
 import Router from './router.js';
+import ENV from './config/environment.js';
 import PageTitleService from 'ember-page-title/services/page-title';
 import { default as BenchSession } from 'common/services/bench-session';
 import { default as ForAppAtVersion } from 'common/services/runner/for-app-at-version';
@@ -35,6 +36,7 @@ const resolverRegistry = {
 
 export const registry = {
   ...resolverRegistry,
+  [`${appName}/config/environment`]: ENV,
   [`${appName}/services/page-title`]: PageTitleService,
   [`${appName}/services/bench-session`]: BenchSession,
   [`${appName}/services/runner/for-app-at-version`]: ForAppAtVersion,
