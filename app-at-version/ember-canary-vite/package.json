@@ -15,8 +15,7 @@
     "build:prod": "pnpm _syncPnpm && vite build",
     "build:dev": "pnpm _syncPnpm && vite build --mode development",
     "start": "pnpm _syncPnpm && NODE_NO_WARNINGS=1 concurrently 'vite' 'pnpm _syncPnpm --watch' --names 'serve,inject'",
-    "_syncPnpm": "pnpm sync-dependencies-meta-injected",
-    "test:ember": "vite build --mode test && ember test --path dist"
+    "_syncPnpm": "pnpm sync-dependencies-meta-injected"
   },
   "dependenciesMeta": {
     "common": {

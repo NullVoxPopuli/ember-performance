@@ -14,9 +14,7 @@
     "build:prod": "pnpm _syncPnpm && ember build --environment=production",
     "build:dev": "pnpm _syncPnpm && ember build --environment=development",
     "_syncPnpm": "pnpm sync-dependencies-meta-injected",
-    "start": "pnpm _syncPnpm && NODE_NO_WARNINGS=1 concurrently 'ember serve' 'pnpm _syncPnpm --watch' --names 'serve,inject'",
-    "test": "concurrently \"pnpm:lint\" \"pnpm:test:*\" --names \"lint,test:\" --prefixColors auto",
-    "test:ember": "ember test"
+    "start": "pnpm _syncPnpm && NODE_NO_WARNINGS=1 concurrently 'ember serve' 'pnpm _syncPnpm --watch' --names 'serve,inject'"
   },
   "dependenciesMeta": {
     "common": {
@@ -32,7 +30,6 @@
     "@embroider/compat": "^3.7.1",
     "@embroider/core": "^3.4.20",
     "@embroider/webpack": "^4.0.9",
-    "@eslint/js": "^9.17.0",
     "@glimmer/component": "^1.1.2",
     "@glimmer/tracking": "^1.1.2",
     "broccoli-asset-rev": "^3.0.0",

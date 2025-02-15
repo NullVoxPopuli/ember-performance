@@ -37,9 +37,6 @@ importers:
       '@embroider/webpack':
         specifier: ^4.0.9
         version: 4.0.9(@embroider/core@3.5.0)(webpack@5.98.0)
-      '@eslint/js':
-        specifier: ^9.19.0
-        version: 9.20.0
       '@glimmer/component':
         specifier: ^1.1.2
         version: 1.1.2(@babel/core@7.26.9)
@@ -980,10 +977,6 @@ packages:
     peerDependencies:
       '@embroider/core': ^3.4.20
       webpack: ^5.0.0
-
-  '@eslint/js@9.20.0':
-    resolution: {integrity: sha512-iZA07H9io9Wn836aVTytRaNqh00Sad+EamwOVJT12GTLw1VGMFV/4JaME+JjLtr9fiGaoWgYnS54wrfWsSs4oQ==}
-    engines: {node: ^18.18.0 || ^20.9.0 || >=21.1.0}
 
   '@glimmer/compiler@0.92.4':
     resolution: {integrity: sha512-xoR8F6fsgFqWbPbCfSgJuJ95vaLnXw0SgDCwyl/KMeeaSxpHwJbr8+BfiUl+7ko2A+HzrY5dPXXnGr4ZM+CUXw==}
@@ -7448,8 +7441,6 @@ snapshots:
       - bufferutil
       - canvas
       - utf-8-validate
-
-  '@eslint/js@9.20.0': {}
 
   '@glimmer/compiler@0.92.4':
     dependencies:

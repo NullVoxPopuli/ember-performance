@@ -18,8 +18,6 @@
     "build:prod": "pnpm _syncPnpm && ember build --environment=production",
     "build:dev": "pnpm _syncPnpm && ember build --environment=development",
     "start": "pnpm _syncPnpm && NODE_NO_WARNINGS=1 concurrently 'ember serve' 'pnpm _syncPnpm --watch' --names 'serve,inject'",
-    "test": "concurrently \"pnpm:lint\" \"pnpm:test:*\" --names \"lint,test:\"",
-    "test:ember": "ember test",
     "_syncPnpm": "pnpm sync-dependencies-meta-injected"
   },
   "devDependencies": {
