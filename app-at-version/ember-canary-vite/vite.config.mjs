@@ -7,6 +7,7 @@ const tracking = `${process.cwd()}/node_modules/ember-source/dist/packages/@glim
 const cachePrimitives = `${process.cwd()}/node_modules/ember-source/dist/packages/@glimmer/tracking/primitives/cache.js`;
 
 export default defineConfig({
+  base: '/ember-canary-vite/',
   resolve: {
     extensions,
     alias: [
