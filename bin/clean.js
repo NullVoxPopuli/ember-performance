@@ -60,11 +60,12 @@ for (let pkg of repo.packages) {
     join(pkg.dir, '.template-lintrc.mjs'),
     join(pkg.dir, 'README.md'),
     join(pkg.dir, '.watchmanconfig'),
+    join(pkg.dir, '.github'),
   ];
 
   for (let f of toRemove) {
     if (existsSync(f)) {
-      await rm(f);
+      await rm(f, { recursive: true });
     }
   }
 }
