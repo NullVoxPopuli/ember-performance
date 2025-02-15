@@ -7,17 +7,8 @@ import { globby } from 'globby';
 
 const repo = await getPackages(process.cwd());
 
-/**
- * Removing all these from each project will help overall
- * install times.
- *
- * We don't touch these projects after they're set up, so linting is
- * not all that important.
- */
-for (let pkg of repo.packages) {
-  if (!pkg.dir.includes('app-at-version')) continue;
 
-  await packageJson.removeDependencies([
+const depsToRemove = [
     '@nullvoxpopuli/eslint-configs',
     'eslint',
     'eslint-plugin-ember',
@@ -31,7 +22,17 @@ for (let pkg of repo.packages) {
     'stylelint',
     'stylelint-config-standard',
     'globals',
-  ], pkg.dir);
+];
+/**
+ * Removing all these from each project will help overall
+ * install times.
+ *
+ * We don't touch these projects after they're set up, so linting is
+ * not all that important.
+ */
+for (let pkg of repo.packages) {
+  if (!pkg.dir.includes('app-at-version')) continue;
+
   await packageJson.modify((json => {
     let hasVite = Boolean(json.devDependencies['vite'])
 
@@ -50,6 +51,10 @@ for (let pkg of repo.packages) {
     if (!hasVite) {
     json.scripts['start'] =
      "pnpm _syncPnpm && NODE_NO_WARNINGS=1 concurrently 'ember serve' 'pnpm _syncPnpm --watch' --names 'serve,inject'";
+    }
+
+    for (let dep of depsToRemove) {
+      delete json.devDependencies[dep];
     }
 
   }), pkg.dir)
