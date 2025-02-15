@@ -68,6 +68,9 @@
     }
   },
   "pnpm": {
+    "overrides": {
+      "@ember/string": "^4.0.0"
+    },
     "patchedDependencies": {
       "fs-extra@9.1.0": "patches/fs-extra@9.1.0.patch"
     }

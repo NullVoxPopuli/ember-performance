@@ -23,6 +23,7 @@
     "@ember/test-helpers": "^4.0.5",
     "@embroider/compat": "^3.8.0",
     "@embroider/core": "^3.5.0",
+    "@ember/string": "^4.0.0",
     "@embroider/macros": "^1.16.5",
     "@embroider/webpack": "^4.0.9",
     "@glimmer/component": "^1.1.2",
@@ -67,9 +68,13 @@
       "injected": true
     }
   },
+
   "pnpm": {
     "patchedDependencies": {
       "fs-extra@9.1.0": "patches/fs-extra@9.1.0.patch"
+    },
+    "overrides": {
+      "@ember/string": "^4.0.0"
     }
   },
   "volta": {

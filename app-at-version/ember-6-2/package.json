@@ -29,6 +29,7 @@
     "@embroider/compat": "^3.8.0",
     "@embroider/core": "^3.5.0",
     "@embroider/webpack": "^4.0.9",
+    "@ember/string": "^4.0.0",
     "@glimmer/component": "^1.1.2",
     "@glimmer/tracking": "^1.1.2",
     "broccoli-asset-rev": "^3.0.0",
@@ -57,6 +58,11 @@
     "qunit-dom": "^3.4.0",
     "tracked-built-ins": "^3.4.0",
     "webpack": "^5.97.1"
+  },
+"pnpm": {
+    "overrides": {
+      "@ember/string": "^4.0.0"
+    }
   },
   "engines": {
     "node": ">= 18"

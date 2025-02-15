@@ -2,7 +2,7 @@
 
 const EmberApp = require('ember-cli/lib/broccoli/ember-app');
 
-module.exports = function (defaults) {
+module.exports = async function (defaults) {
   const utils = await import('ember-cli-utils');
   const config = await utils.configure(__dirname, ['common']);
 
