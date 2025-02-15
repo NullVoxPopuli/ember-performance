@@ -13,10 +13,6 @@
   "scripts": {
     "build:prod": "pnpm _syncPnpm && ember build --environment=production",
     "build:dev": "pnpm _syncPnpm && ember build --environment=development",
-    "lint": "concurrently \"npm:lint:*(!fix)\" --names \"lint:\"",
-    "lint:fix": "concurrently \"npm:lint:*:fix\" --names \"fix:\"",
-    "lint:js": "eslint . --cache",
-    "lint:js:fix": "eslint . --fix",
     "start": "pnpm _syncPnpm && NODE_NO_WARNINGS=1 concurrently 'ember serve' 'pnpm _syncPnpm --watch' --names 'serve,inject'",
     "test": "concurrently \"npm:lint\" \"npm:test:*\" --names \"lint,test:\"",
     "test:ember": "ember test",
@@ -54,7 +50,6 @@
     "ember-resolver": "^11.0.1",
     "ember-source": "~5.4.0",
     "loader.js": "^4.7.0",
-    "prettier": "^3.0.3",
     "qunit": "^2.20.0",
     "qunit-dom": "^2.0.0",
     "pnpm-sync-dependencies-meta-injected": "^0.0.14",

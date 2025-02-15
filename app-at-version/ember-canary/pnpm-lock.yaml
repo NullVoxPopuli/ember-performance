@@ -113,12 +113,6 @@ importers:
       pnpm-sync-dependencies-meta-injected:
         specifier: ^0.0.14
         version: 0.0.14
-      prettier:
-        specifier: ^3.4.2
-        version: 3.5.1
-      prettier-plugin-ember-template-tag:
-        specifier: ^2.0.4
-        version: 2.0.4(prettier@3.5.1)
       qunit:
         specifier: ^2.24.1
         version: 2.24.1
@@ -4605,20 +4599,9 @@ packages:
     resolution: {integrity: sha512-7KTLTdzdZZYscUc65XmjFiB73vBhBfbPztCYdUNvlaso9PrzjzcmjqBPR0lNGkcVlcO4BjiO5rK/qNz+XAen1Q==}
     engines: {node: ^10 || ^12 || >=14}
 
-  prettier-plugin-ember-template-tag@2.0.4:
-    resolution: {integrity: sha512-Ude3MJyPBMr/Er5aSS9Y0dsnHWX3prpJB+Jj/BKKUT/EvG2ftnIMBsZXmRu68RJA62JJB8MdKBloYmCu2pTRNg==}
-    engines: {node: 18.* || >= 20}
-    peerDependencies:
-      prettier: '>= 3.0.0'
-
   prettier@2.8.8:
     resolution: {integrity: sha512-tdN8qQGvNjw4CHbY+XXk0JgCXn9QiF21a55rBe5LJAU+kDyC4WQn4+awm2Xfk2lQMk5fKup9XgzTZtGkjBdP9Q==}
     engines: {node: '>=10.13.0'}
-    hasBin: true
-
-  prettier@3.5.1:
-    resolution: {integrity: sha512-hPpFQvHwL3Qv5AdRvBFMhnKo4tYxp0ReXiPn2bxkiohEX6mBeBwEpBSQTkD458RaaDKQMYSp4hX4UtfUTA5wDw==}
-    engines: {node: '>=14'}
     hasBin: true
 
   pretty-bytes@5.6.0:
@@ -12088,17 +12071,7 @@ snapshots:
       picocolors: 1.1.0
       source-map-js: 1.2.0
 
-  prettier-plugin-ember-template-tag@2.0.4(prettier@3.5.1):
-    dependencies:
-      '@babel/core': 7.26.9
-      content-tag: 2.0.1
-      prettier: 3.5.1
-    transitivePeerDependencies:
-      - supports-color
-
   prettier@2.8.8: {}
-
-  prettier@3.5.1: {}
 
   pretty-bytes@5.6.0: {}
 
