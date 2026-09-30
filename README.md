@@ -22,37 +22,89 @@ the performance of the Ember.js framework. The general strategy is:
 
 MIT
 
-### Adding a new app 
+### Adding a new app
 
 1. `cd app-at-version`
-2. `npx ember-cli@6.3 new ember-6-3 --no-welcome --pnpm --skip-install --skip-git --embroider`
-3. Add dependencies 
+2. `npx ember-cli@7.3 new ember-7-3 --no-welcome --no-ember-data --pnpm --skip-install --skip-git`
+3. `cd ember-7-3`
+4. Delete the lint and format files.
     ```bash
-    pnpm add --save-dev ember-eslint \
+    rm -rf .github README.md .watchmanconfig eslint.config.mjs \
+        .prettierignore .prettierrc.mjs .stylelintignore .stylelintrc.mjs .template-lintrc.mjs
+    ```
+5. Remove the lint and format dependencies.
+    ```bash
+    pnpm remove @babel/eslint-parser @eslint/js eslint eslint-config-prettier \
+        eslint-plugin-ember eslint-plugin-n eslint-plugin-qunit globals \
+        prettier prettier-plugin-ember-template-tag \
+        stylelint stylelint-config-standard ember-template-lint
+    ```
+6. Add the shared dependencies.
+    ```bash
+    pnpm add --save-dev \
         common@workspace:^ ember-cli-utils@workspace:^ \
         pnpm-sync-dependencies-meta-injected \
-        ember-route-template  
+        ember-route-template
     ```
 
-    It's important that these remain devdependencies, because we'll be adding the new 
-    app as a `dependencies` entry in `benchmark/package.json` later.
+    These must stay `devDependencies`.
+    The new app becomes a `dependencies` entry in `benchmark/package.json` in the last step.
 
-4. Remove dependencies 
-    ```bash 
-    pnpm remove ember-data ember-fetch ember-cli-clean-css \
-        stylelint stylelint-config-standard stylelint-prettier
-    ```
-5. Add to `config/environment.js`
+7. Add to `config/environment.js`
     ```js
     const envUtils = require('ember-cli-utils/environment');
 
     // ...
     const ENV = {
       deps: envUtils.getDeps(__dirname),
-      rootURL: '/ember-6-0/',
+      rootURL: '/ember-7-3/',
     }
     ```
-6. Add to `ember-cli-build.js`    
+8. Add to `vite.config.mjs`
+    ```js
+    export default defineConfig({
+      base: '/ember-7-3/',
+      // ...
+    });
+    ```
+9. Add to `app/router.js`
+    ```js
+    Router.map(function () {
+      this.route('bench', { path: ':name' });
+    });
+    ```
+10. Add a file, `app/routes/application.js`, with this content:
+    ```js
+    export { ApplicationRoute as default } from 'common';
+    ```
+11. Delete `app/templates/application.gjs`.
+    The application template comes from `common`.
+12. Replace the `scripts` in `package.json` with:
+    ```json
+    "build:prod": "pnpm _syncPnpm && vite build",
+    "build:dev": "pnpm _syncPnpm && vite build --mode development",
+    "start": "pnpm _syncPnpm && NODE_NO_WARNINGS=1 concurrently 'vite' 'pnpm _syncPnpm --watch' --names 'serve,inject'",
+    "_syncPnpm": "pnpm sync-dependencies-meta-injected"
+    ```
+13. Add a `dependenciesMeta` entry to `package.json`:
+    ```json
+    "dependenciesMeta": {
+      "common": {
+        "injected": true
+      }
+    }
+    ```
+14. Add the new app as a `dependencies` entry in `benchmark/package.json`
+    ```json
+    "ember-7-3": "workspace:*"
+    ```
+
+For Ember 6.7 and older, the blueprint does not use Vite:
+
+- Add `--embroider` to the `ember-cli new` command in step 2.
+- Skip steps 8 and 11.
+- In step 12, use `ember build --environment=production` and `ember build --environment=development`.
+- Spread the shared build config into the app options in `ember-cli-build.js`:
     ```js
     module.exports = async function (defaults) {
       const utils = await import('ember-cli-utils');
@@ -60,36 +112,19 @@ MIT
 
       const app = new EmberApp(defaults, {
         ...config,
-        // Add options here
       });
     ```
-7. Add to `app/router.js` (or `app/router.ts`)
-    ```js
-    Router.map(function () {
-      this.route('bench', { path: ':name' });
-    });
-    ```
-8. Add a file, `app/routes/application.js` with contents:
-    ```js 
-    export { ApplicationRoute as default } from 'common';
-    ```
 
-9. Change the build scripts `package.json`. Delete `build` and add:
-    ```
-    "build:prod": "pnpm _syncPnpm && ember build --environment=production",
-    "build:dev":  "pnpm _syncPnpm && ember build --environment=development",
-    "_syncPnpm": "pnpm sync-dependencies-meta-injected",
-    ```
+### Updating canary
 
-10. Add a dependenciesMeta entry to your new project:
+1. Get the current canary version and tarball path.
+    ```bash
+    curl -s https://s3.amazonaws.com/builds.emberjs.com/canary.json
     ```
-    "dependenciesMeta": {
-      "common": {
-        "injected": true
-      }
-    }
+2. In `app-at-version/ember-canary`, delete the old `ember-source-*.tgz`.
+3. Download the tarball to `ember-source-<version>.tgz`.
+    ```bash
+    curl -o 'ember-source-<version>.tgz' 'https://s3.amazonaws.com/builds.emberjs.com<assetPath>'
     ```
-11. Add the new app as a `dependencies` entry in `benchmark/package.json`
-    ```
-    "ember-6-0": "workspace:*"
-    ```
+4. Set `ember-source` in `package.json` to `file:ember-source-<version>.tgz`.
+5. `pnpm install`
