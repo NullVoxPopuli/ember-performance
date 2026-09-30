@@ -1,5 +1,6 @@
 import Route from '@ember/routing/route';
-import { inject as service } from '@ember/service';
+
+import { service } from '../service.ts';
 
 import type RouterService from '@ember/routing/router-service';
 

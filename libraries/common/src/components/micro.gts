@@ -1,9 +1,9 @@
 import Component from '@glimmer/component';
 import { tracked } from '@glimmer/tracking';
-import { inject as service } from '@ember/service';
 
 import { use } from 'ember-resources';
 
+import { service } from '../service.ts';
 import { OneOffTinyBench, type Options } from './bench.ts';
 import { Layout } from './layout.gts';
 import { store } from './storage.ts';

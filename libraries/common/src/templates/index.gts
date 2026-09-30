@@ -1,9 +1,8 @@
 // @ts-expect-error types-missing
 import { LinkTo } from '@ember/routing';
 
-import Route from 'ember-route-template';
-
 import { Version } from '../components/version.gts';
+import { Route } from '../route-template.ts';
 import { scenarios } from '../scenarios.ts';
 
 export default Route(

@@ -20,12 +20,9 @@ importers:
       decorator-transforms:
         specifier: ^2.3.0
         version: 2.3.0(@babel/core@7.25.2)
-      ember-page-title:
-        specifier: ^8.2.3
-        version: 8.2.3(ember-source@6.2.0(@glimmer/component@1.1.2(@babel/core@7.25.2))(@glint/template@1.4.0)(rsvp@4.8.5))
       ember-resources:
         specifier: ^7.0.3
-        version: 7.0.3(@glimmer/component@1.1.2(@babel/core@7.25.2))(@glimmer/tracking@1.1.2)(@glint/template@1.4.0)(ember-source@6.2.0(@glimmer/component@1.1.2(@babel/core@7.25.2))(@glint/template@1.4.0)(rsvp@4.8.5))
+        version: 7.0.3(@glimmer/component@1.1.2(@babel/core@7.25.2))(@glint/template@1.4.0)(ember-source@6.2.0(@glimmer/component@1.1.2(@babel/core@7.25.2))(@glint/template@1.4.0)(rsvp@4.8.5))
       ember-route-template:
         specifier: ^1.0.3
         version: 1.0.3
@@ -66,9 +63,6 @@ importers:
       '@glimmer/component':
         specifier: ^1.1.2
         version: 1.1.2(@babel/core@7.25.2)
-      '@glimmer/tracking':
-        specifier: ^1.1.2
-        version: 1.1.2
       '@glint/core':
         specifier: 1.4.0
         version: 1.4.0(typescript@5.5.4)
@@ -105,6 +99,9 @@ importers:
       ember-cli-utils:
         specifier: workspace:^
         version: link:../ember-cli-utils
+      ember-page-title:
+        specifier: ^8.2.3
+        version: 8.2.3(ember-source@6.2.0(@glimmer/component@1.1.2(@babel/core@7.25.2))(@glint/template@1.4.0)(rsvp@4.8.5))
       ember-source:
         specifier: ^6.2.0
         version: 6.2.0(@glimmer/component@1.1.2(@babel/core@7.25.2))(@glint/template@1.4.0)(rsvp@4.8.5)
@@ -1086,9 +1083,6 @@ packages:
   '@glimmer/syntax@0.92.3':
     resolution: {integrity: sha512-7wPKQmULyXCYf0KvbPmfrs/skPISH2QGR9atCnmDWnHyLv5SSZVLm1P0Ctrpta6+Ci3uGQb7hGk0IjsLEavcYQ==}
 
-  '@glimmer/tracking@1.1.2':
-    resolution: {integrity: sha512-cyV32zsHh+CnftuRX84ALZpd2rpbDrhLhJnTXn9W//QpqdRZ5rdMsxSY9fOsj0CKEc706tmEU299oNnDc0d7tA==}
-
   '@glimmer/util@0.44.0':
     resolution: {integrity: sha512-duAsm30uVK9jSysElCbLyU6QQYO2X9iLDLBIBUcCqck9qN1o3tK2qWiHbGK5d6g8E2AJ4H88UrfElkyaJlGrwg==}
 
@@ -1100,9 +1094,6 @@ packages:
 
   '@glimmer/util@0.92.3':
     resolution: {integrity: sha512-K1oH93gGU36slycxJ9CcFpUTsdOc4XQ6RuZFu5oRsxFYtEF5PSu7ik11h58fyeoaWOr1ebfkyAMawbeI2AJ5GA==}
-
-  '@glimmer/validator@0.44.0':
-    resolution: {integrity: sha512-i01plR0EgFVz69GDrEuFgq1NheIjZcyTy3c7q+w7d096ddPVeVcRzU3LKaqCfovvLJ+6lJx40j45ecycASUUyw==}
 
   '@glimmer/validator@0.84.3':
     resolution: {integrity: sha512-RTBV4TokUB0vI31UC7ikpV7lOYpWUlyqaKV//pRC4pexYMlmqnVhkFrdiimB/R1XyNdUOQUmnIAcdic39NkbhQ==}
@@ -6867,11 +6858,6 @@ snapshots:
       '@handlebars/parser': 2.0.0
       simple-html-tokenizer: 0.5.11
 
-  '@glimmer/tracking@1.1.2':
-    dependencies:
-      '@glimmer/env': 0.1.7
-      '@glimmer/validator': 0.44.0
-
   '@glimmer/util@0.44.0': {}
 
   '@glimmer/util@0.84.3':
@@ -6889,8 +6875,6 @@ snapshots:
     dependencies:
       '@glimmer/env': 0.1.7
       '@glimmer/interfaces': 0.92.3
-
-  '@glimmer/validator@0.44.0': {}
 
   '@glimmer/validator@0.84.3':
     dependencies:
@@ -8663,11 +8647,10 @@ snapshots:
     transitivePeerDependencies:
       - supports-color
 
-  ember-resources@7.0.3(@glimmer/component@1.1.2(@babel/core@7.25.2))(@glimmer/tracking@1.1.2)(@glint/template@1.4.0)(ember-source@6.2.0(@glimmer/component@1.1.2(@babel/core@7.25.2))(@glint/template@1.4.0)(rsvp@4.8.5)):
+  ember-resources@7.0.3(@glimmer/component@1.1.2(@babel/core@7.25.2))(@glint/template@1.4.0)(ember-source@6.2.0(@glimmer/component@1.1.2(@babel/core@7.25.2))(@glint/template@1.4.0)(rsvp@4.8.5)):
     dependencies:
       '@embroider/addon-shim': 1.9.0
       '@embroider/macros': 1.16.6(@glint/template@1.4.0)
-      '@glimmer/tracking': 1.1.2
       '@glint/template': 1.4.0
       ember-source: 6.2.0(@glimmer/component@1.1.2(@babel/core@7.25.2))(@glint/template@1.4.0)(rsvp@4.8.5)
     optionalDependencies:

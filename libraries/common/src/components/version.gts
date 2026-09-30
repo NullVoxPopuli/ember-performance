@@ -1,5 +1,6 @@
 import Component from '@glimmer/component';
-import { inject as service } from '@ember/service';
+
+import { service } from '../service.ts';
 
 import type ForAppVersion from '../services/runner/for-app-at-version.ts';
 
