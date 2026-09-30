@@ -6,77 +6,67 @@
   "repository": "",
   "license": "MIT",
   "author": "",
+  "exports": {
+    "./tests/*": "./tests/*",
+    "./*": "./app/*"
+  },
   "directories": {
     "doc": "doc",
     "test": "tests"
   },
   "scripts": {
-    "build:prod": "pnpm _syncPnpm && ember build --environment=production",
-    "build:dev": "pnpm _syncPnpm && ember build --environment=development",
-    "start": "pnpm _syncPnpm && NODE_NO_WARNINGS=1 concurrently 'ember serve' 'pnpm _syncPnpm --watch' --names 'serve,inject'",
+    "build:prod": "pnpm _syncPnpm && vite build",
+    "build:dev": "pnpm _syncPnpm && vite build --mode development",
+    "start": "pnpm _syncPnpm && NODE_NO_WARNINGS=1 concurrently 'vite' 'pnpm _syncPnpm --watch' --names 'serve,inject'",
     "_syncPnpm": "pnpm sync-dependencies-meta-injected"
   },
   "devDependencies": {
-    "@babel/core": "^7.26.7",
-    "@babel/plugin-proposal-decorators": "^7.25.9",
-    "@ember/optional-features": "^2.2.0",
-    "@ember/test-helpers": "^4.0.5",
-    "@embroider/compat": "^3.8.0",
-    "@embroider/core": "^3.5.0",
-    "@ember/string": "^4.0.0",
-    "@embroider/macros": "^1.16.5",
-    "@embroider/webpack": "^4.0.9",
-    "@glimmer/component": "^1.1.2",
-    "@glimmer/tracking": "^1.1.2",
-    "broccoli-asset-rev": "^3.0.0",
+    "@babel/core": "^7.29.7",
+    "@babel/plugin-transform-runtime": "^7.29.7",
+    "@babel/runtime": "^7.29.7",
+    "@ember/optional-features": "^3.0.0",
+    "@ember/string": "^4.0.1",
+    "@ember/test-helpers": "^5.4.3",
+    "@ember/test-waiters": "^4.1.2",
+    "@embroider/compat": "^4.1.25",
+    "@embroider/config-meta-loader": "^1.0.0",
+    "@embroider/core": "^4.6.7",
+    "@embroider/legacy-inspector-support": "^0.1.3",
+    "@embroider/macros": "^1.21.1",
+    "@embroider/router": "^3.0.6",
+    "@embroider/vite": "^1.7.13",
+    "@glimmer/component": "^2.1.1",
+    "@rollup/plugin-babel": "^7.1.0",
+    "babel-plugin-ember-template-compilation": "^4.0.0",
     "common": "workspace:^",
-    "concurrently": "^9.1.2",
-    "ember-auto-import": "^2.10.0",
-    "ember-cli": "~6.2.0",
-    "ember-cli-app-version": "^7.0.0",
-    "ember-cli-babel": "^8.2.0",
-    "ember-cli-dependency-checker": "^3.3.3",
-    "ember-cli-htmlbars": "^6.3.0",
-    "ember-cli-inject-live-reload": "^2.1.0",
+    "concurrently": "^9.2.4",
+    "decorator-transforms": "^2.4.0",
+    "ember-cli": "~7.3.0",
+    "ember-cli-babel": "^8.3.2",
+    "ember-cli-deprecation-workflow": "^4.0.1",
     "ember-cli-utils": "workspace:^",
     "ember-load-initializers": "^3.0.1",
-    "ember-modifier": "^4.2.0",
-    "ember-page-title": "^8.2.3",
-    "ember-qunit": "^9.0.1",
-    "ember-resolver": "^13.1.0",
+    "ember-modifier": "^4.3.0",
+    "ember-page-title": "^9.0.3",
+    "ember-qunit": "^9.1.0",
+    "ember-resolver": "^13.2.0",
     "ember-route-template": "^1.0.3",
-    "ember-source": "6.3.0-beta.1",
-    "ember-template-imports": "^4.3.0",
-    "loader.js": "^4.7.0",
+    "ember-source": "~7.4.0-beta.1",
     "pnpm-sync-dependencies-meta-injected": "^0.0.14",
-    "qunit": "^2.24.1",
-    "qunit-dom": "^3.4.0",
-    "tracked-built-ins": "^3.4.0",
-    "webpack": "^5.97.1"
+    "qunit": "^2.26.0",
+    "qunit-dom": "^3.6.0",
+    "testem": "^3.21.0",
+    "vite": "^8.3.0"
   },
   "engines": {
-    "node": ">= 18"
+    "node": ">= 20.19.0"
   },
   "ember": {
     "edition": "octane"
   },
   "dependenciesMeta": {
-    "ember-source": {
-      "injected": true
-    },
     "common": {
       "injected": true
     }
-  },
-  "pnpm": {
-    "patchedDependencies": {
-      "fs-extra@9.1.0": "patches/fs-extra@9.1.0.patch"
-    },
-    "overrides": {
-      "@ember/string": "^4.0.0"
-    }
-  },
-  "volta": {
-    "extends": "../../package.json"
   }
 }

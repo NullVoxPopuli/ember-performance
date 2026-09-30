@@ -9,6 +9,7 @@ node_modules/
 # misc
 .turbo
 .env*
+!.env.development
 .pnp*
 .eslintcache
 coverage/

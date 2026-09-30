@@ -8,53 +8,31 @@ function isCanaryOrBeta(str) {
   return str.includes('-canary') || str.includes('-beta');
 }
 
-const isClassic = process.env.BUILD === 'classic';
-
 function emberVersions() {
-  return fs
-    .readdirSync('../app-at-version')
-    .map(function (file) {
-      if (isClassic) {
-        if (file.includes('vite')) {
-          return;
-        }
-      }
+  return fs.readdirSync('../app-at-version').sort((a, b) => {
+    let isASpecial = isCanaryOrBeta(a);
+    let isBSpecial = isCanaryOrBeta(b);
 
-      if (file.includes('-canary')) {
-        return file;
-      }
+    if (isASpecial && isBSpecial) {
+      return a.localeCompare(b);
+    }
 
-      if (file.includes('-beta')) {
-        return file;
-      }
+    if (isASpecial) {
+      return 1;
+    }
 
-      return file;
-    })
-    .filter(Boolean)
-    .sort((a, b) => {
-      let isASpecial = isCanaryOrBeta(a);
-      let isBSpecial = isCanaryOrBeta(b);
+    if (isBSpecial) {
+      return 1;
+    }
 
-      if (isASpecial && isBSpecial) {
-        return a.localeCompare(b);
-      }
+    let aV = a.replaceAll('-', '.').match(/\d+-\d+/);
+    let bV = b.replaceAll('-', '.').match(/\d+-\d+/);
 
-      if (isASpecial) {
-        return 1;
-      }
+    if (!aV || !aV[0]) return -1;
+    if (!bV || !bV[0]) return 1;
 
-      if (isBSpecial) {
-        return 1;
-      }
-
-      let aV = a.replaceAll('-', '.').match(/\d+-\d+/);
-      let bV = b.replaceAll('-', '.').match(/\d+-\d+/);
-
-      if (!aV || !aV[0]) return -1;
-      if (!bV || !bV[0]) return 1;
-
-      return semverCompare(`${aV[0]}.0`, `${bV[0]}.0`);
-    });
+    return semverCompare(`${aV[0]}.0`, `${bV[0]}.0`);
+  });
 }
 
 let localEmbers = emberVersions();
