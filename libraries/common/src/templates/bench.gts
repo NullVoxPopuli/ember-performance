@@ -1,7 +1,6 @@
 import { LinkTo } from '@ember/routing';
 
-import Route from 'ember-route-template';
-
+import { Route } from '../route-template.ts';
 import { scenarios } from '../scenarios.ts';
 
 function get(name: string) {

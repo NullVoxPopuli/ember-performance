@@ -4,6 +4,7 @@ const envUtils = require('ember-cli-utils/environment');
 
 module.exports = function (environment) {
   const ENV = {
+    deps: envUtils.getDeps(__dirname),
     modulePrefix: 'ember-canary',
     environment,
     rootURL: '/ember-canary/',
@@ -20,8 +21,6 @@ module.exports = function (environment) {
       // Here you can pass flags/options to your application instance
       // when it is created
     },
-
-    deps: envUtils.getDeps(__dirname),
   };
 
   if (environment === 'development') {

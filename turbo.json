@@ -21,7 +21,8 @@
         "public/**",
         "tests/**",
         "index.html",
-        "ember-cli-build.js",
+        "ember-cli-build.*",
+        ".env.*",
         "vite.config.*"
       ]
     },
@@ -39,7 +40,8 @@
         "public/**",
         "tests/**",
         "index.html",
-        "ember-cli-build.js",
+        "ember-cli-build.*",
+        ".env.*",
         "vite.config.*"
       ]
     },

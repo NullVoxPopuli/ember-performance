@@ -4,10 +4,10 @@ import { tracked } from '@glimmer/tracking';
 // import { renderSettled } from '@ember/renderer';
 import { renderSettled } from '@ember/-internals/glimmer';
 import { assert } from '@ember/debug';
-import { inject as service } from '@ember/service';
 
 import { use } from 'ember-resources';
 
+import { service } from '../service.ts';
 import { OneOffTinyBench, type Options } from './bench.ts';
 import { Layout } from './layout.gts';
 import { store } from './storage.ts';

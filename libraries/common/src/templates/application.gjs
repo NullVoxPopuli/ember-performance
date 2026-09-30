@@ -1,8 +1,9 @@
 import Component from '@glimmer/component';
-import { inject as service } from '@ember/service';
 
 import { pageTitle } from 'ember-page-title';
-import Route from 'ember-route-template';
+
+import { Route } from '../route-template.ts';
+import { service } from '../service.ts';
 
 import type ForAppVersion from '../services/runner/for-app-version';
 

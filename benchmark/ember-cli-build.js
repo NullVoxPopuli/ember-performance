@@ -29,10 +29,6 @@ module.exports = async function (defaults) {
       continue;
     }
 
-    if (isClassic && appFolderName.includes('vite')) {
-      continue;
-    }
-
     let funnel = new Funnel(distFolder, {
       destDir: appFolderName,
       overwrite: true,
